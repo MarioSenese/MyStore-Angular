@@ -1,0 +1,23 @@
+<p>Cart</p>
+
+<p><a routerLink="/shipping">Shipping prices</a></p>
+
+<div class="cart-item" *ngFor="let item of items">
+  <span>{{ item.name }}</span>
+  <span>{{ item.price | currency }}</span>
+</div>
+
+<!-- Nel form, utilizziamo il binding di evento "ngSubmit" per ascoltare l'invio del form e chiamare il metodo onSubmit().
+Inoltre aggiungiamo anche i campi (input text) nome&indirizzo, ciascuno con un attributo "formControlName" che si lega ai controlli del modulo checkoutForm
+-->
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" formControlName="name" id="name" />
+  </div>
+  <div>
+    <label for="address">Address</label>
+    <input type="text" formControlName="address" id="address" />
+  </div>
+  <button class="button" type="submit">Purchase</button>
+</form>

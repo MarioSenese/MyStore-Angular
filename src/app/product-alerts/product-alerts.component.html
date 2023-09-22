@@ -1,0 +1,4 @@
+<p *ngIf="product && product.price > 700">
+  <button type="button" (click)="notify.emit()">Notify me</button>
+  <!-- Per far funzionare questo bottone, il componente (figlio) deve notificare e passare al componente padre. Il componente ProductAlerts deve emettere quindi un evento quando l'utente fa click sul bottone in questione e il componente ProductList (padre) deve rispondere all'evento -->
+</p>

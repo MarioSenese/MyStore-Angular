@@ -1,0 +1,10 @@
+<h2>Product details</h2>
+<div *ngIf="product">
+  <!-- "se il prodotto esiste", stampa nome, prezzo e descrizione  -->
+  <h3>{{ product.name }}</h3>
+  <!-- La riga seguente utilizza la pipe di valuta per trasformare product.price (il prezzo del prodotto) da un numero a una stringa di valuta. Una pipe è un modo per trasformare i dati nel modello html. Per avere il prezzo in euro -> currency: 'EUR':true -->
+  <h4>{{ product.price | currency }}</h4>
+  <p>{{ product.description }}</p>
+
+  <button type="button" (click)="addToCart(product)">Buy</button>
+</div>

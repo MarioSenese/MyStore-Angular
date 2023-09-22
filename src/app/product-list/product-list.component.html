@@ -1,0 +1,33 @@
+<h2>Products</h2>
+<!-- ciclo for per la visualizzazione di tutti i prodotti caricati -->
+<div *ngFor="let product of products">
+  <!--<h3>{{ product.name }}</h3>-->
+  <h3>
+    <!-- impostiamo il title in modo che sia il nome del prodotto utilizzando le [] con la sintassi di associazione della proprietà 
+    La direttiva routerLink consente di personalizzare l'elemento <a>. In questo caso il percorso contiene un segmento fisso '/products'. Il segmento finale, invece, è variabile e inserisce la proprietà ID del prodotto corrente
+    -->
+    <a
+      href=""
+      [title]="product.name + ' details'"
+      [routerLink]="['/products', product.id]"
+    >
+      {{ product.name }}
+    </a>
+
+    <!-- Aggiungiamo la descrizione dei prodotti. Utilizziamo una direttiva in modo che Angular crei l'elemento solo se il prodotto corrente ha una descrizione. Con *ngIf -->
+    <p *ngIf="product.description">Description: {{ product.description }}</p>
+  </h3>
+
+  <!-- Aggiungiamo un pulsante in modo che gli utenti possano condividere un prodotto. Lo possiamo fare associando l'evento del pulsante "click" al metodo "share()" nel file ts di product-list. Tale associazione avviene con l'uso delle ()   -->
+  <button type="button" (click)="share()">Share</button>
+  <app-product-alerts
+    [product]="product"
+    (notify)="onNotify()"
+  ></app-product-alerts>
+</div>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->
